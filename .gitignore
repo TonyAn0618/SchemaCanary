@@ -1,0 +1,11 @@
+node_modules/
+.pnpm-store/
+dist/
+coverage/
+.schemacanary/
+*.log
+*.tgz
+.DS_Store
+.env
+.env.*
+!.env.example

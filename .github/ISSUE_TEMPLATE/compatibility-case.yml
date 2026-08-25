@@ -1,0 +1,50 @@
+name: Compatibility case
+description: Contribute a sanitized, reproducible provider/schema observation.
+title: "[Case]: "
+labels: [compatibility-case]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A model family name is not enough. Record the provider, model snapshot, API surface, date, and repeated observations. Never submit secrets or proprietary data.
+  - type: input
+    id: provider
+    attributes:
+      label: Provider and endpoint
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Exact model identifier or snapshot
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Observation date
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: textarea
+    id: schema
+    attributes:
+      label: Sanitized minimal schema or reproduction link
+    validations:
+      required: true
+  - type: textarea
+    id: observations
+    attributes:
+      label: Repeated observations
+      description: Include attempts, outcomes, API surface, parameters, tool version, and exact error category.
+    validations:
+      required: true
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Publication and safety
+      options:
+        - label: I have the right to publish this case under the repository license.
+          required: true
+        - label: I removed credentials, private data, and identifying absolute paths.
+          required: true

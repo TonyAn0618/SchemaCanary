@@ -1,0 +1,34 @@
+name: Feature request
+description: Propose a focused improvement tied to a real user problem.
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Real problem
+      description: Describe the most recent situation in which this blocked you and your current workaround.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Explain the result you need without prescribing a large implementation.
+    validations:
+      required: true
+  - type: dropdown
+    id: pillar
+    attributes:
+      label: Core pillar
+      options:
+        - Discover
+        - Minimize
+        - Track
+        - Project quality or documentation
+    validations:
+      required: true
+  - type: textarea
+    id: maintenance
+    attributes:
+      label: Compatibility, security, cost, and maintenance impact

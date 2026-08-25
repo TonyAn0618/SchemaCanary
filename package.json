@@ -1,0 +1,47 @@
+{
+  "name": "schemacanary",
+  "version": "0.0.0",
+  "description": "Find, minimize, and track JSON Schema compatibility failures across LLM providers.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "sideEffects": false,
+  "bin": {
+    "schemacanary": "dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "schemas",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "format": "biome format --write src tests schemas package.json tsconfig.json tsconfig.build.json biome.json",
+    "format:check": "biome format src tests schemas package.json tsconfig.json tsconfig.build.json biome.json",
+    "lint": "biome lint src tests",
+    "prepack": "pnpm build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "ajv": "8.20.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.10",
+    "@types/node": "24.13.3",
+    "typescript": "7.0.2",
+    "vitest": "4.1.11"
+  }
+}

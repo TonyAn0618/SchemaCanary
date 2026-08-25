@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:schemacanary:inspect-report:1.0.0",
+  "title": "SchemaCanary inspect report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "formatVersion",
+    "tool",
+    "command",
+    "generatedAt",
+    "outcome",
+    "input",
+    "dialect",
+    "canonical",
+    "validation",
+    "diagnostics"
+  ],
+  "properties": {
+    "format": {
+      "const": "schemacanary.inspect-report"
+    },
+    "formatVersion": {
+      "const": "1.0.0"
+    },
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": {
+          "const": "schemacanary"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "command": {
+      "const": "inspect"
+    },
+    "generatedAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "outcome": {
+      "enum": ["valid", "invalid_json", "invalid_schema", "unsupported_dialect"]
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "path", "sizeBytes"],
+      "properties": {
+        "kind": {
+          "const": "file"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sizeBytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "documentType": {
+          "enum": ["object", "array", "string", "number", "boolean", "null"]
+        }
+      }
+    },
+    "dialect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["declared", "effective", "resolution"],
+      "properties": {
+        "declared": {
+          "type": ["string", "null"]
+        },
+        "effective": {
+          "type": ["string", "null"]
+        },
+        "resolution": {
+          "enum": ["declared", "defaulted", "unsupported", "unavailable"]
+        }
+      }
+    },
+    "canonical": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["algorithm", "digest", "sizeBytes"],
+          "properties": {
+            "algorithm": {
+              "const": "rfc8785-sha256-v1"
+            },
+            "digest": {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            },
+            "sizeBytes": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      ]
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["json", "jsonSchema", "scope"],
+      "properties": {
+        "json": {
+          "enum": ["valid", "invalid"]
+        },
+        "jsonSchema": {
+          "enum": ["valid", "invalid", "unsupported_dialect", "not_checked"]
+        },
+        "scope": {
+          "const": "meta-schema-only"
+        }
+      }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/diagnostic"
+      }
+    }
+  },
+  "$defs": {
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "severity", "message"],
+      "properties": {
+        "code": {
+          "enum": [
+            "JSON_SYNTAX_ERROR",
+            "JSON_DUPLICATE_KEY",
+            "JSON_INVALID_UNICODE",
+            "JSON_NON_FINITE_NUMBER",
+            "JSON_NESTING_TOO_DEEP",
+            "SCHEMA_INVALID_ROOT",
+            "SCHEMA_META_VALIDATION_ERROR",
+            "SCHEMA_UNSUPPORTED_DIALECT"
+          ]
+        },
+        "severity": {
+          "const": "error"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "jsonPointer": {
+          "type": "string"
+        },
+        "keyword": {
+          "type": "string"
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "column": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}
