@@ -7,5 +7,4 @@ Versioning once a public package is released.
 
 ### Added
 
-- Initial repository, product brief, contribution and security policies.
 - Offline `schemacanary inspect` vertical slice for JSON Schema 2020-12 preflight checks.

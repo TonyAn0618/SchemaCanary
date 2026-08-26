@@ -6,8 +6,6 @@
     "moduleDetection": "force",
     "strict": true,
     "noEmit": true,
-    "declaration": true,
-    "declarationMap": true,
     "sourceMap": true,
     "verbatimModuleSyntax": true,
     "noUncheckedIndexedAccess": true,

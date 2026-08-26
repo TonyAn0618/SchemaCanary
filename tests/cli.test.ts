@@ -5,6 +5,7 @@ import { join } from "node:path";
 import { afterEach, describe, expect, test } from "vitest";
 
 import { runCli, type CliRuntime } from "../src/cli/run.js";
+import { TOOL_VERSION } from "../src/version.js";
 
 const temporaryDirectories: string[] = [];
 
@@ -159,5 +160,13 @@ describe("runCli", () => {
     expect(await runCli(["--version"], runtime(cwd, stdout, stderr))).toBe(0);
     expect(stdout.join("")).toContain("schemacanary inspect");
     expect(stdout.join("")).toContain("0.0.0-test");
+  });
+
+  test("keeps the CLI version in sync with package.json", async () => {
+    const packageJson = JSON.parse(
+      await readFile(new URL("../package.json", import.meta.url), "utf8"),
+    ) as { version: string };
+
+    expect(TOOL_VERSION).toBe(packageJson.version);
   });
 });

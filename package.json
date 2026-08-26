@@ -12,15 +12,8 @@
   "bugs": {
     "url": "https://github.com/TonyAn0618/SchemaCanary/issues"
   },
-  "sideEffects": false,
   "bin": {
     "schemacanary": "dist/cli.js"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
   },
   "files": [
     "dist",
