@@ -8,7 +8,6 @@ export const MAX_SCHEMA_BYTES = 1024 * 1024;
 
 export interface SchemaInput {
   displayPath: string;
-  resolvedPath: string;
   sizeBytes: number;
   text: string;
 }
@@ -85,7 +84,6 @@ export async function readSchemaInput(
 
   return {
     displayPath: displayPath(inputPath, resolvedPath, cwd),
-    resolvedPath,
     sizeBytes: bytes.byteLength,
     text,
   };

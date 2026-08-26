@@ -13,6 +13,7 @@ input and reporting chain without requiring credentials or incurring provider co
 
 - Use TypeScript and native ESM on supported Node.js LTS releases, initially Node 22.12 and newer.
 - Use one package until independently versioned packages are justified.
+- Keep v0.1 CLI-only. Add a public JavaScript API only after a concrete integration requires one.
 - Use Node's built-in argument parser and filesystem/crypto APIs to minimize runtime dependencies.
 - Use Ajv for JSON Schema 2020-12 meta-schema validation.
 - Implement `inspect` before provider adapters. It performs strict local parsing, canonical
@@ -25,6 +26,7 @@ input and reporting chain without requiring credentials or incurring provider co
 ## Consequences
 
 - Users get a safe, testable command before live integrations exist.
+- The package does not expose internal parser or renderer modules as a supported library API.
 - Node 20 is not supported because it reached end of life in 2026.
 - Only JSON Schema 2020-12 is accepted by the first inspection implementation. Additional dialects
   require explicit tests and a report-compatible design.

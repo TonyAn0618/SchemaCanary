@@ -1,7 +1,7 @@
 name: Compatibility case
 description: Contribute a sanitized, reproducible provider/schema observation.
 title: "[Case]: "
-labels: [compatibility-case]
+labels: [compatibility]
 body:
   - type: markdown
     attributes:

@@ -60,13 +60,5 @@ successful constrained decoding, or semantic correctness.
 | 2 | CLI usage, input-file, size-limit, or output-write error. |
 | 70 | Unexpected internal error. |
 
-Detailed diagnostics use stable string codes rather than additional process exit codes.
-
-## Planned command: `run`
-
-```text
-schemacanary run <schema-file> --prompt <file> --target <provider:model>...
-```
-
-The future command will reuse `inspect`, then perform explicit live requests. Its provider,
-failure, budget, and reproduction contracts require separate ADRs before implementation.
+Detailed diagnostics use stable string codes rather than additional process exit codes. Future
+commands will be documented only after their contracts are accepted and implemented.
