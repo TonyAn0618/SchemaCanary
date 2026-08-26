@@ -8,10 +8,8 @@ Do not open a public issue for a suspected secret leak, arbitrary code execution
 access, supply-chain compromise, cost-amplification flaw, or exposure of private schemas and model
 responses.
 
-A private reporting channel must be configured before the repository is publicly launched. Once a
-GitHub repository exists, enable GitHub Private Vulnerability Reporting and replace this paragraph
-with the exact private-reporting link. Until then, retain the minimal reproduction privately and do
-not include real credentials or customer data.
+Use [GitHub Private Vulnerability Reporting](https://github.com/TonyAn0618/SchemaCanary/security/advisories/new).
+Retain sensitive reproductions privately and do not include real credentials or customer data.
 
 The initial response target for a severe report is 24 hours. This is a maintainer goal, not a
 contractual SLA.

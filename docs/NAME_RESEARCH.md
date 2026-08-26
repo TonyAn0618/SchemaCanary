@@ -3,6 +3,10 @@
 **Checked:** 2026-08-25
 **Decision:** keep `SchemaCanary` for the MVP; always use the full name and the `schemacanary` CLI.
 
+The public repository was created at <https://github.com/TonyAn0618/SchemaCanary> on 2026-08-25.
+This reserves the repository name only under that account; npm names and trademark rights remain
+separate.
+
 ## Availability snapshot
 
 At the time of review:

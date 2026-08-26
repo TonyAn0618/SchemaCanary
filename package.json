@@ -4,6 +4,14 @@
   "description": "Find, minimize, and track JSON Schema compatibility failures across LLM providers.",
   "type": "module",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TonyAn0618/SchemaCanary.git"
+  },
+  "homepage": "https://github.com/TonyAn0618/SchemaCanary#readme",
+  "bugs": {
+    "url": "https://github.com/TonyAn0618/SchemaCanary/issues"
+  },
   "sideEffects": false,
   "bin": {
     "schemacanary": "dist/cli.js"
