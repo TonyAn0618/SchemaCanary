@@ -2,12 +2,14 @@
 
 SchemaCanary is currently pre-alpha and has no compatibility or response-time guarantee.
 
-Once the GitHub repository is public:
-
-- use a Bug issue for reproducible defects;
-- use a Compatibility Case issue for a sanitized provider/schema observation;
-- use Discussions for usage questions and product ideas;
-- use private vulnerability reporting for security issues.
+- use a [Bug issue](https://github.com/TonyAn0618/SchemaCanary/issues/new?template=bug.yml) for
+  reproducible defects;
+- use a [Compatibility Case issue](https://github.com/TonyAn0618/SchemaCanary/issues/new?template=compatibility-case.yml)
+  for a sanitized provider/schema observation;
+- use [Discussions](https://github.com/TonyAn0618/SchemaCanary/discussions) for usage questions and
+  product ideas;
+- use [private vulnerability reporting](https://github.com/TonyAn0618/SchemaCanary/security/advisories/new)
+  for security issues.
 
 Do not post API keys, private prompts, customer schemas, raw proprietary responses, or sensitive
 filesystem paths. Ordinary issues have a target acknowledgment time of three working days; new pull

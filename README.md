@@ -1,5 +1,7 @@
 # SchemaCanary
 
+[![CI](https://github.com/TonyAn0618/SchemaCanary/actions/workflows/ci.yml/badge.svg)](https://github.com/TonyAn0618/SchemaCanary/actions/workflows/ci.yml)
+
 > Find, minimize, and track JSON Schema compatibility failures across LLM providers.
 
 SchemaCanary is an early-stage open-source CLI for developers who rely on structured outputs,
@@ -93,8 +95,15 @@ The project uses the Apache-2.0 license. Read [`CONTRIBUTING.md`](CONTRIBUTING.m
 large pull request. Project direction, quality gates, risks, and maintenance rules live in
 [`AI_OPEN_SOURCE_PROJECT_PLAYBOOK.md`](AI_OPEN_SOURCE_PROJECT_PLAYBOOK.md).
 
+Questions and ideas belong in [Discussions](https://github.com/TonyAn0618/SchemaCanary/discussions).
+Use [Issues](https://github.com/TonyAn0618/SchemaCanary/issues) for reproducible defects and
+compatibility cases. Report vulnerabilities through
+[GitHub's private channel](https://github.com/TonyAn0618/SchemaCanary/security/advisories/new), not a
+public issue.
+
 ## Project name
 
 `SchemaCanary` is always written in full. It is not affiliated with products named Canary.
-Name availability was checked on 2026-08-25 but is not legally reserved until the relevant
-accounts and packages are created. See [`docs/NAME_RESEARCH.md`](docs/NAME_RESEARCH.md).
+Name availability was checked on 2026-08-25 and this GitHub repository now reserves the name under
+its owner; npm names and legal rights are separate. See
+[`docs/NAME_RESEARCH.md`](docs/NAME_RESEARCH.md).

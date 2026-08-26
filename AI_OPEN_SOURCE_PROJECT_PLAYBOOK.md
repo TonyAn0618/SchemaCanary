@@ -6,14 +6,14 @@
 
 | 字段 | 当前值 |
 |---|---|
-| 项目暂定名 | `SchemaCanary`（正式发布前检查重名与包名） |
+| 项目暂定名 | `SchemaCanary`（GitHub 仓库已建立；npm 发布前复查包名） |
 | 项目定位 | 跨模型 Structured Outputs / JSON Schema 兼容性测试与最小失败用例生成工具 |
-| 文档版本 | `0.3.0` |
+| 文档版本 | `0.4.0` |
 | 当前阶段 | P0：问题验证；并行完成 P1/P2 技术奠基 |
 | 当前目标版本 | `v0.1.0` |
-| 最后审阅日期 | 2026-08-25 |
+| 最后审阅日期 | 2026-08-26 |
 | 负责人 | 项目创建者 |
-| 正式仓库 | 本地 Git 已初始化；GitHub 远程待创建 |
+| 正式仓库 | [github.com/TonyAn0618/SchemaCanary](https://github.com/TonyAn0618/SchemaCanary) |
 | 本文件标准路径 | 仓库根目录：`AI_OPEN_SOURCE_PROJECT_PLAYBOOK.md` |
 
 ### 状态标记规则
@@ -67,22 +67,21 @@
 | 项目 | 状态 |
 |---|---|
 | 成熟阶段 | P0：问题验证尚未完成；P1/P2 的离线技术基础已开始 |
-| 已确认 | 项目名初查可用；TypeScript/Node 单包方案可行；离线 `inspect`、严格解析、2020-12 元验证、canonical hash 与版本化报告已跑通；竞品初查未发现同时覆盖原生跨 provider 实测、失败缩减与纵向漂移的成熟工具 |
+| 已确认 | 项目名初查可用；TypeScript/Node 单包方案可行；离线 `inspect`、严格解析、2020-12 元验证、canonical hash 与版本化报告已跑通；公开 GitHub 仓库、受保护 `main`、跨平台 CI 与仓库安全基线已验证；竞品初查未发现同时覆盖原生跨 provider 实测、失败缩减与纵向漂移的成熟工具 |
 | 尚未确认 | 足够多真实用户是否愿意安装和复用；真实 provider 失败能否被稳定分类并自动缩减 |
 | 当前里程碑 | 收集真实失败样本，同时冻结首个 provider 纵向切片的请求、失败与预算契约 |
 | 当前发布 | 无 |
-| 健康状态 | 🟡 本地工程骨架和离线 CLI 质量门禁通过，但尚无 GitHub 远程、真实 provider 链路和外部用户证据 |
+| 健康状态 | 🟡 公开仓库、离线 CLI、本地质量门禁、首次跨平台 CI 与仓库安全基线已通过，但尚无真实 provider 链路和外部用户证据 |
 | 最大风险 | 技术实现继续前进，而真实用户频率、可脱敏案例和 reducer 价值仍未得到验证 |
 
 ### 接下来三件事
 
 1. 访谈至少 10 位做过 Structured Outputs、tool calling、Agent、MCP 或 AI 数据抽取的开发者，收集至少 5 个可脱敏的真实失败 Schema。
-2. 创建 GitHub 远程仓库，启用分支保护、CI、私密漏洞报告、Dependabot 与 Secret scanning，并跑通首次跨平台 CI。
+2. 邀请至少 3 位陌生开发者只按 README 在全新环境试用离线 `inspect`，记录是否能在 10 分钟内得到第一份报告及所有卡点。
 3. 基于真实案例为首个原生 provider adapter 写 ADR、契约测试、失败分类与费用/调用/超时上限，再完成一次受控真实请求。
 
 ### 当前阻塞
 
-- `gh` CLI 已安装并校验，但尚未登录 GitHub；远程仓库和仓库级安全/分支设置仍未创建。
 - 尚无真实用户样本和设计伙伴。
 - 尚无可公开的真实 provider 失败 fixture，也未配置用于受控 live test 的凭据预算。
 
@@ -243,11 +242,11 @@ Auto-reducing...
 
 ### 仓库创建
 
-- [ ] 选择公开仓库和清楚的仓库描述、Topics、社交预览图。
+- [ ] 选择公开仓库和清楚的仓库描述、Topics、社交预览图。公开仓库、描述与 Topics 已完成；社交预览图待补。证据：[GitHub 仓库](https://github.com/TonyAn0618/SchemaCanary)。
 - [x] 选择许可证。已采用 Apache-2.0，包含明确专利授权。证据：`LICENSE`、D-006。
-- [ ] 设置默认分支保护、必需 CI、禁止强推和删除默认分支。
-- [ ] 开启两步验证、Secret scanning、Dependabot 与适用的安全扫描。
-- [x] GitHub Actions 使用最小权限，第三方 Action 固定到可信版本或提交 SHA。证据：`.github/workflows/ci.yml`；远程首次运行待验证。
+- [x] 设置默认分支保护、必需 CI、禁止强推和删除默认分支。`main` 要求 PR、严格必需检查、线性历史与对话解决，并对管理员生效；禁止强推和删除。
+- [ ] 开启两步验证、Secret scanning、Dependabot 与适用的安全扫描。仓库 Secret scanning、Push protection、Dependabot security updates 与自动安全修复已启用；维护者账号 2FA/恢复方式仍需单独核实。
+- [x] GitHub Actions 使用最小权限，第三方 Action 固定到可信版本或提交 SHA。证据：`.github/workflows/ci.yml` 与[首次跨平台运行](https://github.com/TonyAn0618/SchemaCanary/actions/runs/32882191726)。
 - [ ] 建立 npm trusted publishing 或等价的低密钥发布方式；发布前再启用。
 
 ### 根目录最低文件集
@@ -256,7 +255,7 @@ Auto-reducing...
 - [x] `LICENSE`：明确可使用和再分发条件。
 - [x] `CONTRIBUTING.md`：环境、测试、提交、PR、设计讨论规则。
 - [x] `CODE_OF_CONDUCT.md`：社区行为边界与处理渠道。
-- [x] `SECURITY.md`：安全边界和响应预期已写；GitHub 私密报告渠道仍须在远程仓库启用。
+- [x] `SECURITY.md`：安全边界、响应预期与 GitHub 私密漏洞报告渠道已写并启用。
 - [x] `SUPPORT.md`：问题、讨论、漏洞分别去哪里。
 - [x] `CHANGELOG.md`：用户可见变化和破坏性变化。
 - [x] `ROADMAP.md`：Now / Next / Later，不承诺不现实日期。
@@ -268,8 +267,8 @@ Auto-reducing...
 
 - [x] Issue Forms：已创建 Bug、provider 兼容案例和功能建议模板；独立文档模板可在公开前补充。
 - [x] PR 模板：动机、变更、测试、兼容性、安全与文档。
-- [ ] 标签体系：`bug`、`provider:*`、`area:*`、`good first issue`、`help wanted`、`security`。
-- [ ] Discussions 或明确的问答渠道，避免所有问题进入 Bug 队列。
+- [x] 标签体系：`bug`、`provider:*`、`area:*`、`good first issue`、`help wanted`、`security` 已建立。
+- [x] Discussions 已启用并作为问答渠道，避免所有问题进入 Bug 队列。
 - [ ] 自动化 Release notes 和变更分类。
 - [ ] `CODEOWNERS` 只在有多位真实维护者后启用，避免虚假治理。
 
@@ -295,8 +294,8 @@ tests/
 ### P2 Definition of Done
 
 - [ ] 新贡献者只看仓库文档就知道如何安装、报告问题和提交 PR。
-- [ ] 默认分支的每次变更都经过自动检查。
-- [ ] 许可证、安全联系和贡献规则均明确，没有“以后再补”的法律与信任空白。
+- [x] 默认分支的每次变更都经过自动检查。证据：`main` 的严格必需检查与[首次 Actions 运行](https://github.com/TonyAn0618/SchemaCanary/actions/runs/32882191726)。
+- [x] 许可证、安全联系和贡献规则均明确，没有“以后再补”的法律与信任空白。证据：`LICENSE`、`SECURITY.md`、`CONTRIBUTING.md`。
 
 ## 9. P3：架构、正确性、安全与成本设计
 
@@ -450,11 +449,11 @@ npx schemacanary run order.schema.json \
 - [ ] live provider 测试：仅在显式凭据与预算下运行，与普通 CI 分离。
 - [x] 端到端测试：从 CLI 输入到报告文件和退出码。证据：`tests/cli.test.ts`。
 - [x] 安装测试：从打包 tarball 在独立临时项目安装并运行 CLI，2026-08-25 通过。
-- [ ] 跨平台测试：Linux、macOS、Windows；至少覆盖受支持 Node 版本。
+- [x] 跨平台测试：Linux、macOS、Windows；首次 CI 已通过 Ubuntu Node 22/24、macOS Node 24 与 Windows Node 24。证据：[Actions run 32882191726](https://github.com/TonyAn0618/SchemaCanary/actions/runs/32882191726)。
 
 ### 必需 CI 门禁
 
-- [x] 格式检查、lint、类型检查、单元测试和构建全部通过。证据：2026-08-25 本地 `pnpm check`，6 个测试文件、28 个测试通过；远程 CI 尚待首次运行。
+- [x] 格式检查、lint、类型检查、单元测试和构建全部通过。证据：2026-08-25 本地 `pnpm check`，6 个测试文件、28 个测试通过；[首次远程 CI](https://github.com/TonyAn0618/SchemaCanary/actions/runs/32882191726) 的 5 个任务全部通过。
 - [ ] 关键路径有覆盖率下限，但不为追求数字编写无价值测试。
 - [ ] 锁文件、许可证、已知漏洞和秘密泄露检查通过。
 - [ ] 报告格式和 CLI 帮助文本有 snapshot/golden 测试。
@@ -800,6 +799,7 @@ npx schemacanary run order.schema.json \
 | D-005 | 2026-08-25 | 保留完整名称 `SchemaCanary`，CLI 使用 `schemacanary`，不简称 `Canary` | 精确名称暂未发现占用，但 Canary 单词在相邻领域较拥挤 | 已接受 | `docs/NAME_RESEARCH.md` |
 | D-006 | 2026-08-25 | 采用 Apache-2.0 许可证 | 允许广泛使用，同时提供明确专利授权与贡献边界 | 已接受 | `LICENSE` |
 | D-007 | 2026-08-25 | 第一条垂直切片是离线 `inspect`，只检查 JSON Schema 2020-12，并输出版本化报告 | 先验证输入、身份摘要、报告契约和分发链，避免用假的 provider `run` 混淆产品承诺 | 已接受 | `docs/CLI_SPEC.md`、`schemas/inspect-report.v1.schema.json` |
+| D-008 | 2026-08-26 | 公开仓库使用 `TonyAn0618/SchemaCanary`，通过受保护 `main`、squash-only PR 和严格必需 CI 管理变更 | 从第一天建立可审计、可复现且适合单维护者的协作基线 | 已接受 | [仓库](https://github.com/TonyAn0618/SchemaCanary)、[首次 CI](https://github.com/TonyAn0618/SchemaCanary/actions/runs/32882191726) |
 
 决策状态可用：`建议`、`暂定`、`已接受`、`已替代`、`已撤销`。重大决策被替代时保留原记录并指向新决策。
 
@@ -810,7 +810,7 @@ npx schemacanary run order.schema.json \
 | TD-001 | 尚无正式报告 schema | 阻碍工具集成 | 首个垂直切片前暂缓 | 第一个端到端原型前 | 已解决（2026-08-25）：`schemas/inspect-report.v1.schema.json` |
 | TD-002 | 概率性 failure oracle 未定义 | 可能误判偶发失败 | v0.1 先聚焦确定性拒绝 | 进入 Next 前 | 待处理 |
 | TD-003 | provider 条款与公开 benchmark 边界未审查 | 可能影响数据发布 | 尚未开始公开运行 | Beta 前 | 待处理 |
-| TD-004 | 跨平台 CI 已配置但尚未在 GitHub runner 执行 | Windows/macOS 的真实环境兼容性仍未验证 | 远程 GitHub 仓库尚未创建 | 首次推送后立即运行并保存证据 | 待处理 |
+| TD-004 | 跨平台 CI 已配置但尚未在 GitHub runner 执行 | Windows/macOS 的真实环境兼容性仍未验证 | 远程 GitHub 仓库尚未创建 | 首次推送后立即运行并保存证据 | 已解决（2026-08-26）：[5 个任务全部通过](https://github.com/TonyAn0618/SchemaCanary/actions/runs/32882191726) |
 
 新增技术债必须写明“为什么现在不处理”和“何时必须处理”，不能把此表当永久停车场。
 
@@ -909,14 +909,24 @@ npx schemacanary run order.schema.json \
 
 | 字段 | 内容 |
 |---|---|
-| 日期 | 2026-08-25 |
-| 本次目标 | 建立可重复的 GitHub CLI 工作流，并核查相似项目与当前 Star |
-| 已完成 | 从 GitHub 官方 Release 安装用户级 `gh` 2.98.0，配置 zsh PATH；建立直接竞品与相邻项目表，明确 schemafit 和 Promptfoo 的重叠与差异 |
-| 证据 | `/Users/tonyan/.local/bin/gh`、`/Users/tonyan/.zprofile`、`docs/COMPETITOR_LANDSCAPE.md` |
-| 新决定 | 不把静态 provider lint/repair 或普通排行榜作为核心差异；继续以真实执行、稳定失败签名、自动最小复现和纵向漂移为闭环 |
-| 测试/检查 | 官方 SHA-256 校验一致；macOS 签名链显示 GitHub Developer ID；`zsh -lic 'gh --version'` 返回 2.98.0；竞品 Star 由 GitHub REST API 核验 |
-| 阻塞 | `gh` 尚未登录；项目名尚待最终确认；GitHub 远程与首次跨平台 CI 尚未创建；仍无真实用户案例 |
-| 下一步 | 登录 GitHub 并最终确认名称；创建公开远程仓库和首次 PR/CI；访谈 10 位目标用户并收集 5 个脱敏 Schema |
+| 日期 | 2026-08-26 |
+| 本次目标 | 创建并加固公开 GitHub 仓库，通过真实 PR/CI 工作流交付远程初始化 |
+| 已完成 | 创建 `TonyAn0618/SchemaCanary` 并推送初始提交；启用 Issues、Discussions、私密漏洞报告、Secret scanning、Push protection、Dependabot security updates 与自动安全修复；建立标签；设置 squash-only 合并和受保护 `main` |
+| 证据 | [公开仓库](https://github.com/TonyAn0618/SchemaCanary)、[首次跨平台 CI](https://github.com/TonyAn0618/SchemaCanary/actions/runs/32882191726)、README/支持/安全链接与仓库元数据 |
+| 新决定 | D-008：以受保护 `main`、squash-only PR 和严格必需 CI 作为默认协作流程 |
+| 测试/检查 | 首次 Actions 的质量门禁及 Ubuntu Node 22/24、macOS Node 24、Windows Node 24 共 5 个任务全部通过；2026-08-26 本地 `pnpm check` 通过（格式、lint、类型、6 个测试文件/28 项测试、构建） |
+| 阻塞 | 仍无真实用户案例、公开 provider 失败 fixture 和受预算保护的 live-test 凭据；npm 包与社交预览尚未发布 |
+| 下一步 | 访谈 10 位目标用户并收集 5 个脱敏 Schema；让 3 位陌生开发者完成 README 试用；设计首个原生 provider 纵向切片 |
+
+### 2026-08-25 — 安装 gh 与竞品核查
+
+- 本次目标：建立可重复的 GitHub CLI 工作流，并核查相似项目与当时 Star。
+- 完成内容：从 GitHub 官方 Release 安装用户级 `gh` 2.98.0，配置 zsh PATH；建立直接竞品与相邻项目表，明确 schemafit 和 Promptfoo 的重叠与差异。
+- 证据：`/Users/tonyan/.local/bin/gh`、`/Users/tonyan/.zprofile`、`docs/COMPETITOR_LANDSCAPE.md`。
+- 新决定：不把静态 provider lint/repair 或普通排行榜作为核心差异；继续以真实执行、稳定失败签名、自动最小复现和纵向漂移为闭环。
+- 测试/检查：官方 SHA-256 校验一致；macOS 签名链显示 GitHub Developer ID；`zsh -lic 'gh --version'` 返回 2.98.0；竞品 Star 由 GitHub REST API 核验。
+- 当时阻塞：`gh` 尚未登录；GitHub 远程与首次跨平台 CI 尚未创建；仍无真实用户案例。
+- 后续结果：登录、远程仓库、仓库安全配置与首次跨平台 CI 已于下一会话完成。
 
 ### 2026-08-25 — 初始化仓库与离线 inspect
 
@@ -976,6 +986,7 @@ npx schemacanary run order.schema.json \
 
 | 版本 | 日期 | 变化 |
 |---|---|---|
+| 0.4.0 | 2026-08-26 | 记录公开 GitHub 仓库、受保护默认分支、安全基线、首次跨平台 CI 与远程协作流程 |
 | 0.3.0 | 2026-08-25 | 记录 GitHub CLI 安装、竞品与 Star 快照、差异化边界和最新会话交接 |
 | 0.2.0 | 2026-08-25 | 记录正式仓库初始化、离线 `inspect` 垂直切片、已接受决策、测试证据、风险与技术债状态 |
 | 0.1.0 | 2026-08-25 | 创建完整生命周期、质量门槛、增长、维护、治理及跨会话交接框架 |

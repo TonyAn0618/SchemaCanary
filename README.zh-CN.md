@@ -1,5 +1,7 @@
 # SchemaCanary
 
+[![CI](https://github.com/TonyAn0618/SchemaCanary/actions/workflows/ci.yml/badge.svg)](https://github.com/TonyAn0618/SchemaCanary/actions/workflows/ci.yml)
+
 SchemaCanary 是一个处于早期阶段的开源 CLI，用于发现、缩减和持续跟踪不同 LLM
 provider 对 JSON Schema / Structured Outputs 的兼容性问题。
 
@@ -27,3 +29,7 @@ node dist/cli.js inspect examples/order.schema.json --format json
 英文 README 是面向国际开源社区的主要说明。完整产品定义参见
 [`docs/PRODUCT_BRIEF.md`](docs/PRODUCT_BRIEF.md)，长期执行标准参见
 [`AI_OPEN_SOURCE_PROJECT_PLAYBOOK.md`](AI_OPEN_SOURCE_PROJECT_PLAYBOOK.md)。
+
+使用问题和想法请发到 [Discussions](https://github.com/TonyAn0618/SchemaCanary/discussions)，
+可复现缺陷和兼容案例请发到 [Issues](https://github.com/TonyAn0618/SchemaCanary/issues)。安全漏洞请使用
+[私密报告入口](https://github.com/TonyAn0618/SchemaCanary/security/advisories/new)，不要创建公开 Issue。
